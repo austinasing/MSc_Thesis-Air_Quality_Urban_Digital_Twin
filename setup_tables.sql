@@ -5,11 +5,12 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 
 -- Create historical sensor data table
 CREATE TABLE IF NOT EXISTS sensor_data (
-    id BIGSERIAL PRIMARY KEY,
+    id BIGSERIAL,
     sensor_id INT NOT NULL,
     measured_time TIMESTAMPTZ NOT NULL,
     measurement TEXT NOT NULL,
     reading_value FLOAT NOT NULL,
+    PRIMARY KEY (id, measured_time),
     CONSTRAINT unique_sensor_measurement_time UNIQUE (sensor_id, measured_time, measurement)
 );
 -- Create timescaledb hypertable
@@ -17,11 +18,12 @@ SELECT create_hypertable('sensor_data', 'measured_time', if_not_exists => TRUE);
 
 -- Create historical maps table
 CREATE TABLE IF NOT EXISTS pollution_maps (
-    id BIGSERIAL PRIMARY KEY,
+    id BIGSERIAL,
     modeled_time TIMESTAMPTZ NOT NULL,
-    measurement TEXT NOT NULL
-    raster RASTER NOT NULL;
-)
+    measurement TEXT NOT NULL,
+    raster_data RASTER NOT NULL,
+    PRIMARY KEY (id, modeled_time)
+);
 -- Create hypertable
 SELECT create_hypertable('pollution_maps', 'modeled_time', if_not_exists => TRUE);
 -- Add index for querying by measurement type

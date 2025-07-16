@@ -43,7 +43,7 @@ class AirPollutionModel:
         # Model configuration
         self.pollutant = pollutant
         self.resolution = resolution
-        self.API_credentials = # not public
+        self.API_credentials = 0 # not public
         # Spatial data files (initialized later)
         self.building_height_file = None
         self.bus_stops_file = None

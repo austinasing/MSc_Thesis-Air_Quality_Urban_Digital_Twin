@@ -1,8 +1,10 @@
 -- Drop old tables and types if they exist
 DROP TABLE IF EXISTS sensor_data;
 DROP TABLE IF EXISTS pollution_maps;
+DROP TABLE IF EXISTS precalc_ivs;
 DROP TYPE IF EXISTS measurement_type;
 DROP TYPE IF EXISTS map_type;
+DROP TYPE IF EXISTS buffer_type;
 
 -- Add necessesary extensions
 CREATE EXTENSION IF NOT EXISTS postgis CASCADE;
@@ -23,6 +25,16 @@ CREATE TABLE sensor_data (
 );
 -- Create timescaledb hypertable
 SELECT create_hypertable('sensor_data', 'measured_time', if_not_exists => TRUE);
+
+-- Create precalculated IV table
+CREATE TYPE buffer_type as ENUM('C','NE','N','NW','W','SW','S','SE','E');
+CREATE TABLE precalc_ivs (
+    indep_var TEXT NOT NULL,
+    buffer_type buffer_type,
+    radius SMALLINT,
+    raster_data RASTER NOT NULL,
+    id SERIAL PRIMARY KEY
+);
 
 -- Create historical maps table
 CREATE TYPE map_type as ENUM ('AQI', 'O3', 'NO2', 'SO2', 'PM10', 'PM25');

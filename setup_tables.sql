@@ -27,7 +27,7 @@ CREATE TABLE sensor_data (
 SELECT create_hypertable('sensor_data', 'measured_time', if_not_exists => TRUE);
 
 -- Create precalculated IV table
-CREATE TYPE buffer_type as ENUM('C','NE','N','NW','W','SW','S','SE','E');
+CREATE TYPE buffer_type as ENUM('cir','NE','N','NW','W','SW','S','SE','E');
 CREATE TABLE precalc_ivs (
     indep_var TEXT NOT NULL,
     buffer_type buffer_type,

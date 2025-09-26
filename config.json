@@ -1,0 +1,35 @@
+{
+  "initializationUrls": [
+    "sofia_init"
+  ],
+  "parameters": {
+    "appName": "Sofia 3D Viewer",
+
+    "cesiumIonAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5Y2VkNWVlMi00ZGE0LTQ0ZmEtODM5My05YjllNGY2MzZlNDkiLCJpZCI6MjY4MjIwLCJpYXQiOjE3MzY1MjgwODF9.cB6qaqGcfNUzBQUanPjhORRlj1sX4CjUyFiudyIBsOQ",
+    "cesiumTerrainAssetId": 1,
+
+    "disableMyLocation":true,
+    "disableSplitter":true,
+    "searchBar":null,
+
+    "disclaimer": null,
+    "brandBarElements": [
+      "",
+      "<a target=\"_blank\" href=\"https://terria.io\"><img src=\"images/terria_logo.png\" height=\"52\" title=\"Version: {{version}}\" /></a>",
+      ""
+    ],
+    "supportEmail": null,
+    "feedbackUrl": "feedback",
+    "searchBarConfig": {
+      "show": false
+    },
+    "searchProviders": [],
+    "helpContent": [],
+    "helpContentTerms": [],
+    "showWelcomeMessage": false,
+    "showInAppGuides": false,
+    "experimentalFeatures": true,
+    "proj4ServiceBaseUrl": "proj4def/",
+    "mobileDefaultViewerMode": "2d"
+  }
+}
